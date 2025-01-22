@@ -144,11 +144,18 @@ def main(args):
     print(class_names)
 
     finished_class = set()
-    masked_words = set(class_names)
+    flattend_maked_words = [item for sublist in class_names for item in sublist]
+    masked_words = set(flattend_maked_words)
+    provided_class_words = set(flattend_maked_words)
     cls_repr = [None for _ in range(len(class_names))]
-    class_words = [[class_names[cls]] for cls in range(len(class_names))]
-    class_words_representations = [[static_word_representations[word_to_index[class_names[cls]]]]
-                                   for cls in range(len(class_names))]
+    class_words = [class_names[cls] for cls in range(len(class_names))]
+    class_words_representations = []
+    for words_list in class_words:
+        print(words_list)
+        words_rpr = [static_word_representations[word_to_index[words_list[w]]] 
+                                   for w in range(len(words_list))]
+        class_words_representations.append([np.mean(np.stack(words_rpr), axis=0)])
+
     for t in range(1, args.T):
         class_representations = [average_with_harmonic_series(class_words_representation)
                                  for class_words_representation in class_words_representations]
@@ -170,11 +177,12 @@ def main(args):
                         if similarities[i] > highest_similarity:
                             highest_similarity = similarities[i]
                             highest_similarity_word_index = i
+                    elif word in provided_class_words:
+                        continue
                     else:
                         if word not in existing_class_words:
                             stop_criterion = True
                             break
-                        lowest_masked_words_similarity = min(lowest_masked_words_similarity, similarities[i])
                 else:
                     if word in existing_class_words:
                         stop_criterion = True

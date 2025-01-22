@@ -107,7 +107,7 @@ def main(args):
 
     data_folder = os.path.join(INTERMEDIATE_DATA_FOLDER_PATH, args.dataset_name)
     if args.lm_type == 'bbu':
-        dataset["class_names"] = [x.lower() for x in dataset["class_names"]]
+        dataset["class_names"] = [[x.lower() for x in lst] for lst in dataset["class_names"]]
 
     os.makedirs(data_folder, exist_ok=True)
     with open(os.path.join(data_folder, "dataset.pk"), "wb") as f:

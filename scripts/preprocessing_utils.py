@@ -64,8 +64,11 @@ def load_labels(data_dir):
 
 
 def load_classnames(data_dir):
+    class_names = []
     with open(os.path.join(data_dir, 'classes.txt'), mode='r', encoding='utf-8') as classnames_file:
-        class_names = "".join(classnames_file.readlines()).strip().split("\n")
+        for line in classnames_file:
+            names = line.strip().split(',')
+            class_names.append(names)
     return class_names
 
 
