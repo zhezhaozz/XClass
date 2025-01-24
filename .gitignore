@@ -2,6 +2,7 @@
 scripts/runs/
 data/intermediate_data/*
 data/datasets/*
+data/embeddings/*
 !data/datasets/AGNews/README.md
 !data/datasets/20News/README.md
 !data/datasets/NYT-Small/README.md
