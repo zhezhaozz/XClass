@@ -151,7 +151,6 @@ def main(args):
     class_words = [class_names[cls] for cls in range(len(class_names))]
     class_words_representations = []
     for words_list in class_words:
-        print(words_list)
         words_rpr = [static_word_representations[word_to_index[words_list[w]]] 
                                    for w in range(len(words_list))]
         class_words_representations.append([np.mean(np.stack(words_rpr), axis=0)])

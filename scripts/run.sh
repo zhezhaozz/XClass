@@ -10,4 +10,4 @@ python evaluate.py --dataset ${dataset} --stage Align --suffix pca64.clusgmm.bbu
 python prepare_text_classifer_training.py --dataset_name ${dataset}
 ./run_train_text_classifier.sh ${gpu} ${dataset} pca64.clusgmm.bbu-12.mixture-100.42.0.5
 python evaluate.py --dataset ${dataset} --stage Rep --suffix bbu-12-mixture-100
-python evaluate.p y --dataset ${dataset} --stage Align --suffix pca64.clusgmm.bbu-12.mixture-100.42
+python evaluate.py --dataset ${dataset} --stage Align --suffix pca64.clusgmm.bbu-12.mixture-100.42

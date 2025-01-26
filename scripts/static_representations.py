@@ -157,7 +157,6 @@ def main(args):
       word_avg[k] = word_rep[k]/word_count[k]
     
     vocab_words = list(word_avg.keys())
-    print(vocab_words)
     static_word_representations = list(word_avg.values())
     vocab_occurrence = list(word_count.values()) 
 
