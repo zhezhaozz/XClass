@@ -157,6 +157,7 @@ def main(args):
       word_avg[k] = word_rep[k]/word_count[k]
     
     vocab_words = list(word_avg.keys())
+    print(vocab_words)
     static_word_representations = list(word_avg.values())
     vocab_occurrence = list(word_count.values()) 
 
@@ -179,7 +180,7 @@ if __name__ == '__main__':
     parser.add_argument("--dataset_name", type=str, required=True)
     parser.add_argument("--random_state", type=int, default=42)
     parser.add_argument("--lm_type", type=str, default='bbu')
-    parser.add_argument("--vocab_min_occurrence", type=int, default=5)
+    parser.add_argument("--vocab_min_occurrence", type=int, default=2)
     # last layer of BERT
     parser.add_argument("--layer", type=int, default=12)
     args = parser.parse_args()
