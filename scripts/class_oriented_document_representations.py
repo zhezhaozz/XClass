@@ -184,8 +184,11 @@ def main(args):
                             break
                 else:
                     if word in existing_class_words:
-                        stop_criterion = True
-                        break
+                        if word in provided_class_words:
+                            continue
+                        else:
+                            stop_criterion = True
+                            break
             # the topmost t words are no longer the t words in class_words
             if lowest_masked_words_similarity < highest_similarity:
                 stop_criterion = True
