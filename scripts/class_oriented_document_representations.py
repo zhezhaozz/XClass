@@ -182,6 +182,7 @@ def main(args):
                         if word not in existing_class_words:
                             stop_criterion = True
                             break
+                        lowest_masked_words_similarity = min(lowest_masked_words_similarity, similarities[i])
                 else:
                     if word in existing_class_words:
                         if word in provided_class_words:
