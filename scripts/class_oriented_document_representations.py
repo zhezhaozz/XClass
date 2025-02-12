@@ -154,7 +154,6 @@ def main(args):
         words_rpr = [static_word_representations[word_to_index[words_list[w]]] 
                                    for w in range(len(words_list))]
         class_words_representations.append([np.mean(np.stack(words_rpr), axis=0)])
-
     for t in range(1, args.T):
         class_representations = [average_with_harmonic_series(class_words_representation)
                                  for class_words_representation in class_words_representations]
