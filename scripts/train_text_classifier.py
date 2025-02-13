@@ -209,7 +209,6 @@ def train(args, train_dataset, model, tokenizer):
             model.train()
 
             batch = tuple(t.to(args.device) for t in batch)
-
             inputs = {
                 "input_ids": batch[0],
                 "attention_mask": batch[1],
@@ -276,6 +275,8 @@ def train(args, train_dataset, model, tokenizer):
                 #     torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
                 #     torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
                 #     logger.info("Saving optimizer and scheduler states to %s", output_dir)
+            if step % 5 == 0:
+                logger.info(f" Training Loss: {loss}")
             if args.max_steps > 0 and global_step > args.max_steps:
                 epoch_iterator.close()
                 break
