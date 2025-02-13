@@ -62,8 +62,8 @@ def main(dataset_name, suffix, confidence_threshold):
     text = [cleaned_text[i] for i in selected]
     classes = [documents_to_class[i] for i in selected]
     ###
-    gold_classes = [gold_labels[i] for i in selected]
-    evaluate_predictions(gold_classes, classes)
+    #gold_classes = [gold_labels[i] for i in selected]
+    #evaluate_predictions(gold_classes, classes)
     ###
     write_to_dir(text, classes, dataset_name, f"{suffix}.{confidence_threshold}")
     # json.dump(selected, open("m_sel.json", "w"))

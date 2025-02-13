@@ -40,6 +40,8 @@ def evaluate(dataset, stage, suffix=None, test_index=None):
     else:
         with open(os.path.join(FINETUNE_MODEL_PATH, suffix, "eval_labels.json"), "r") as f:
             pred_labels = json.load(f)
+            if test_index is not None:
+                pred_labels = pred_labels[index]
             evaluate_predictions(gold_labels, pred_labels)
 
 
